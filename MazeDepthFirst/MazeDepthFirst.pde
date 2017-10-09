@@ -24,7 +24,7 @@ class Coord {
 }
 
 void setup() {
-  frameRate(15);
+  frameRate(60);
   size(512, 512);
   cellSize = width / n;
   noStroke();
@@ -68,7 +68,9 @@ void depthFirstAlgorithm() {
   
   if(visitCount == 4) {
     // Can't go anywhere
-    pos = visited.pop();
+    if(visited.size() > 0) {
+      pos = visited.pop();
+    }
   }
   else {
     tryMakeMove();
@@ -106,6 +108,7 @@ void tryMakeMove() {
     visited.push(new Coord(pos.x, pos.y));
   }
   else {
+    // ???
     tryMakeMove();
   }
 }

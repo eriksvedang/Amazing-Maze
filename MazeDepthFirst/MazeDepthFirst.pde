@@ -24,7 +24,7 @@ class Coord {
 }
 
 void setup() {
-  frameRate(5);
+  frameRate(15);
   size(512, 512);
   cellSize = width / n;
   noStroke();
@@ -81,32 +81,32 @@ boolean taken(Coord coord) {
 
 void tryMakeMove() {
   int randomDirection = (int)random(4);
-  if(randomDirection == 0 && pos.x < n - 2 && !visited.contains(new Coord(pos.x + 2, pos.y))) {
+  if(randomDirection == 0 && pos.x < n - 2 && !taken(new Coord(pos.x + 2, pos.y))) {
     pos.x++;
     mark();
     pos.x++;
     visited.push(new Coord(pos.x, pos.y));
   }
-  else if(randomDirection == 1 && pos.y > 1 && !visited.contains(new Coord(pos.x, pos.y - 2))) {
+  else if(randomDirection == 1 && pos.y > 1 && !taken(new Coord(pos.x, pos.y - 2))) {
     pos.y--;
     mark();
     pos.y--;
     visited.push(new Coord(pos.x, pos.y));
   }
-  else if(randomDirection == 2 && pos.x > 1 && !visited.contains(new Coord(pos.x - 2, pos.y))) {
+  else if(randomDirection == 2 && pos.x > 1 && !taken(new Coord(pos.x - 2, pos.y))) {
     pos.x--;
     mark();
     pos.x--;
     visited.push(new Coord(pos.x, pos.y));
   }
-  else if(randomDirection == 3 && pos.y < n - 2 && !visited.contains(new Coord(pos.x, pos.y + 2))) {
+  else if(randomDirection == 3 && pos.y < n - 2 && !taken(new Coord(pos.x, pos.y + 2))) {
     pos.y++;
     mark();
     pos.y++;
     visited.push(new Coord(pos.x, pos.y));
   }
   else {
-    // ???
+    tryMakeMove();
   }
 }
 

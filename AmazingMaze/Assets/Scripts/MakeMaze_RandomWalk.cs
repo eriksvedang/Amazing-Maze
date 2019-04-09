@@ -8,7 +8,6 @@ public class MakeMaze_RandomWalk : MonoBehaviour {
     public GameObject wallPrefab;
     public float spacing = 1.1f;
     public float height = 1.0f;
-    public float chanceOfVisible = 0.5f;
 
     Transform[,] maze;
 
@@ -32,9 +31,6 @@ public class MakeMaze_RandomWalk : MonoBehaviour {
     }
 
     void Update() {
-        if(Input.GetKeyDown(KeyCode.Space)) {
-            GenerateNewMazeLayout();
-        }
         walker.transform.position = new Vector3(x * spacing, 1, z * spacing) - halfBoard;
     }
 
